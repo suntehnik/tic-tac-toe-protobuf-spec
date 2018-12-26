@@ -6,17 +6,45 @@ option java_package = "com.tictactoe.proto";
 option java_outer_classname = "TicTacToeProto";
 
 message cmdGetFieldConfiguration {
-  uint64 x = 1;
-  uint64 y = 2;
-}
-
-message cmdPostFieldConfiguration {
-  Kind kind = 1;
+  uint64 clientRequestId = 1;
   uint64 x = 2;
   uint64 y = 3;
+}
+
+message cmdNewCell {
+  uint64 clientRequestId = 1;
+  Kind kind = 2;
+  uint64 x = 3;
+  uint64 y = 4;
+}
+
+message respNewCell {
+  uint64 clientRequestId = 1;
+  Status status = 2;
+  uint64 x = 3;
+  uint64 y = 4;
+  repeated docFieldCell cells = 5;
+}
+
+message docFieldConfiguration {
+  uint64 clientRequestId = 1;
+  uint64 x = 2;
+  uint64 y = 3;
+  repeated docFieldCell cells = 4;
+}
+
+message docFieldCell {
+  uint64 x = 1;
+  uint64 y = 2;
+  Kind kind = 3;
 }
 
 enum Kind {
   O = 0;
   X = 1;
+}
+
+enum Status {
+  success = 0;
+  fail = 1;
 }

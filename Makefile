@@ -14,7 +14,7 @@ objects: tictactoe.proto
 	./build.sh
 
 java_jar:
-	./gradlew publish
+	./gradlew build publish
 
 clean:
 	rm -rf js && rm -rf php && rm -rf src build/libs
