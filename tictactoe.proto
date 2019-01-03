@@ -21,6 +21,7 @@ message cmdNewCell {
 message respNewCell {
   uint64 clientRequestId = 1;
   Status status = 2;
+  string message = 6;
   uint64 x = 3;
   uint64 y = 4;
   repeated docFieldCell cells = 5;
